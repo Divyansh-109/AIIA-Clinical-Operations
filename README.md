@@ -88,51 +88,50 @@ AIIA Vault provides tailored, high-productivity dashboards for each participant 
 ## 🏛️ System Architecture
 
 ```mermaid
-graph TD
-    subgraph Frontend["Enterprise Clinical Client (React 19 + TypeScript + Vite)"]
-        UI_Home["Public Information Hub"]
-        UI_Login["Role-Based Access Portal"]
-        UI_Desk["Top-Header Clinical Navigation"]
-        UI_Desk --> PI["Lead Doctor (PI) Desk"]
-        UI_Desk --> PV["Safety & 24h Clock Desk"]
-        UI_Desk --> SC["Study Coordinator Desk"]
-        UI_Desk --> CRA["Clinical Monitor Desk"]
-        UI_Desk --> Admin["Administration Desk"]
-        UI_Desk --> Reports["Clinical Reports & Regulatory Exports"]
+flowchart TD
+    subgraph Client["Clinical Research Client (React 19 & TypeScript)"]
+        UI_Home["Public Trial Portal"]
+        UI_Auth["Role-Based Staff Access"]
+        UI_Workspace["Clinical Operations Workspace"]
+        UI_Reports["Clinical Reports & Regulatory Exports"]
     end
 
-    subgraph Backend["High-Performance Application Core (Python + FastAPI)"]
-        API["FastAPI REST Engine (/api/v1)"]
-        AuthService["Role-Based Security & Permissions"]
-        StudyService["Multisite Trial Orchestrator"]
-        SafetyService["Pharmacovigilance & 24h Countdown Engine"]
-        ProtocolService["Visit Window Guardian & Protocol Tolerances"]
-        QualityService["Source Data Verification & Discrepancy Queue"]
-        AuditService["Sequential Tamper-Evident Activity Ledger"]
-        ExportService["Hospital EHR & Regulatory Package Generator"]
+    subgraph Core["High-Performance Core (FastAPI Engine)"]
+        API["REST API Router (/api/v1)"]
+        AuthSvc["Access & Security Controller"]
+        StudySvc["Multisite Trial Orchestrator"]
+        SafetySvc["24-Hour Safety Clock & Vigilance"]
+        ProtoSvc["Protocol Guardian & Tolerances"]
+        QualitySvc["Data Verification & Discrepancies"]
+        AuditSvc["Sequential Activity Ledger"]
+        ExportSvc["Regulatory Package Generator"]
     end
 
-    subgraph Storage["Enterprise Clinical Data Infrastructure"]
-        Postgres[(PostgreSQL 16\nRelational Trial Store)]
-        Redis[(Redis 7.2\nSurveillance Clocks & Caching)]
+    subgraph DataStore["Clinical Storage Infrastructure"]
+        Postgres[("PostgreSQL Database (Trial Registry)")]
+        Redis[("Redis (Active Clocks & Caching)")]
     end
 
-    Frontend -->|Secure REST API| API
-    API --> AuthService
-    API --> StudyService
-    API --> SafetyService
-    API --> ProtocolService
-    API --> QualityService
-    API --> AuditService
-    API --> ExportService
+    UI_Workspace -->|Secure REST Calls| API
+    UI_Auth -->|Authentication| API
+    UI_Reports -->|Data Requests| API
 
-    StudyService --> Postgres
-    SafetyService --> Postgres
-    SafetyService --> Redis
-    ProtocolService --> Postgres
-    QualityService --> Postgres
-    AuditService --> Postgres
-    ExportService --> Postgres
+    API --> AuthSvc
+    API --> StudySvc
+    API --> SafetySvc
+    API --> ProtoSvc
+    API --> QualitySvc
+    API --> AuditSvc
+    API --> ExportSvc
+
+    StudySvc --> Postgres
+    ProtoSvc --> Postgres
+    QualitySvc --> Postgres
+    AuditSvc --> Postgres
+    ExportSvc --> Postgres
+
+    SafetySvc --> Postgres
+    SafetySvc --> Redis
 ```
 
 ---

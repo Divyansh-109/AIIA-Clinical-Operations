@@ -1,0 +1,471 @@
+import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import {
+  Shield,
+  LayoutDashboard,
+  FolderGit2,
+  Users,
+  AlertOctagon,
+  FileCheck2,
+  ShieldCheck,
+  Building2,
+  FileLock2,
+  Share2,
+  LogOut,
+  ChevronDown,
+  UserCheck,
+  ExternalLink,
+  Stethoscope,
+  HeartPulse,
+  Settings,
+  Sparkles,
+  ChevronRight
+} from 'lucide-react';
+import { getRoleDashboardPath } from '../pages/LoginPage';
+
+interface AppLayoutProps {
+  currentUser: any;
+  currentRole: string;
+  flagshipStudy: any;
+  onLogout: () => void;
+  onSwitchRole?: (role: string, email: string) => void;
+  children: React.ReactNode;
+}
+
+export const AppLayout: React.FC<AppLayoutProps> = ({
+  currentUser,
+  currentRole,
+  flagshipStudy,
+  onLogout,
+  onSwitchRole,
+  children
+}) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Dropdown open states
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [roleSwitchOpen, setRoleSwitchOpen] = useState(false);
+
+  // Close dropdowns on outside click
+  const navRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+        setProfileDropdownOpen(false);
+        setRoleSwitchOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Close dropdowns on route change
+  useEffect(() => {
+    setOpenDropdown(null);
+    setProfileDropdownOpen(false);
+    setRoleSwitchOpen(false);
+  }, [location.pathname]);
+
+  const toggleDropdown = (name: string) => {
+    setOpenDropdown(openDropdown === name ? null : name);
+  };
+
+  const myDeskPath = getRoleDashboardPath(currentRole);
+
+  const roleLabels: Record<string, { title: string; color: string }> = {
+    PI: { title: 'Principal Investigator', color: 'badge-emerald' },
+    PHARMACOVIGILANCE: { title: 'Safety & Vigilance Officer', color: 'badge-rose' },
+    STUDY_COORDINATOR: { title: 'Site Study Coordinator', color: 'badge-cobalt' },
+    MONITOR: { title: 'CRA Clinical Monitor', color: 'badge-amber' },
+    ADMIN: { title: 'Institutional Administrator', color: 'badge-purple' }
+  };
+
+  const allRoles = [
+    { role: 'PI', email: 'pi@aiia.gov.in', title: 'Principal Investigator', desc: 'Trial oversight & approvals' },
+    { role: 'PHARMACOVIGILANCE', email: 'pv@aiia.gov.in', title: 'Safety Officer', desc: '24h safety clocks & CDSCO alerts' },
+    { role: 'STUDY_COORDINATOR', email: 'coordinator@aiia.gov.in', title: 'Study Coordinator', desc: 'Patient checkups & vitals' },
+    { role: 'MONITOR', email: 'cra@aiia.gov.in', title: 'CRA Monitor', desc: 'Source verification & queries' },
+    { role: 'ADMIN', email: 'admin@aiia.gov.in', title: 'Administrator', desc: 'Portfolio & system access' }
+  ];
+
+  const handleRoleSelect = (targetRole: string, targetEmail: string) => {
+    if (onSwitchRole) {
+      onSwitchRole(targetRole, targetEmail);
+    }
+    const targetPath = getRoleDashboardPath(targetRole);
+    navigate(targetPath);
+  };
+
+  // Breadcrumb generation based on route
+  const getPageTitle = () => {
+    if (location.pathname.includes('pi-dashboard')) return 'Lead Doctor (PI) Clinical Oversight';
+    if (location.pathname.includes('safety-dashboard')) return 'Pharmacovigilance & 24h Safety Clock Desk';
+    if (location.pathname.includes('coordinator-dashboard')) return 'Hospital Study Coordinator Desk';
+    if (location.pathname.includes('monitor-dashboard')) return 'CRA Quality & Source Verification Desk';
+    if (location.pathname.includes('admin-dashboard')) return 'Institutional Administration Desk';
+    if (location.pathname.includes('study')) return 'Study Specifications & Protocol';
+    if (location.pathname.includes('patients')) return 'Patient Care & Scheduled Visits';
+    if (location.pathname.includes('safety')) return 'Safety Vigilance & Adverse Event Reports';
+    if (location.pathname.includes('protocol')) return 'Visit Window Guardian & Protocol Rules';
+    if (location.pathname.includes('quality')) return 'Data Quality & Clinical Discrepancies';
+    if (location.pathname.includes('sites')) return 'Participating Hospital Network';
+    if (location.pathname.includes('audit')) return 'Official Clinical Audit Trail';
+    if (location.pathname.includes('export')) return 'Official Clinical Reports & Exports';
+    return 'Clinical Operations';
+  };
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--bg-primary)' }}>
+      {/* 1. TOP HEADER NAVIGATION (ENTERPRISE VEEVA VAULT STANDARD) */}
+      <header className="top-nav-bar" ref={navRef}>
+        <div style={{
+          maxWidth: '1440px',
+          margin: '0 auto',
+          padding: '0 24px',
+          height: '66px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
+          {/* Left: Brand Identity & Active Study Pill */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+            <div
+              onClick={() => navigate(myDeskPath)}
+              style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer' }}
+            >
+              <div style={{
+                width: '36px',
+                height: '36px',
+                borderRadius: '8px',
+                background: 'linear-gradient(135deg, #0b1a2d 0%, #0066cc 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#ffffff',
+                boxShadow: '0 2px 6px rgba(0, 102, 204, 0.25)'
+              }}>
+                <Shield size={19} strokeWidth={2.2} />
+              </div>
+              <div>
+                <div style={{ fontSize: '0.9375rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.01em' }}>
+                  AIIA Vault
+                </div>
+                <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
+                  Clinical Trial Operations Suite
+                </div>
+              </div>
+            </div>
+
+            <div style={{ height: '24px', width: '1px', background: 'var(--border-subtle)' }}></div>
+
+            {/* Nav Menu Items with Dropdowns */}
+            <nav style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+              {/* My Desk (Dynamic based on logged in role) */}
+              <button
+                onClick={() => navigate(myDeskPath)}
+                className={`nav-btn ${location.pathname.includes('-dashboard') ? 'active' : ''}`}
+              >
+                <LayoutDashboard size={15} />
+                <span>My Desk</span>
+              </button>
+
+              {/* Dropdown 1: Clinical Studies */}
+              <div className="nav-dropdown-wrapper">
+                <button
+                  onClick={() => toggleDropdown('studies')}
+                  className={`nav-btn ${openDropdown === 'studies' || location.pathname.includes('/study') || location.pathname.includes('/protocol') || location.pathname.includes('/sites') ? 'active' : ''}`}
+                >
+                  <FolderGit2 size={15} />
+                  <span>Studies & Sites</span>
+                  <ChevronDown size={13} />
+                </button>
+
+                {openDropdown === 'studies' && (
+                  <div className="nav-dropdown-menu">
+                    <button
+                      onClick={() => navigate('/app/study')}
+                      className={`nav-dropdown-item ${location.pathname === '/app/study' ? 'active' : ''}`}
+                    >
+                      <div className="nav-item-icon">
+                        <FolderGit2 size={14} />
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 600 }}>Active Trial Overview</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>PCOS-001 protocol details</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => navigate('/app/protocol')}
+                      className={`nav-dropdown-item ${location.pathname === '/app/protocol' ? 'active' : ''}`}
+                    >
+                      <div className="nav-item-icon">
+                        <ShieldCheck size={14} />
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 600 }}>Visit Window Guardian</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Protocol checkup tolerances</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => navigate('/app/sites')}
+                      className={`nav-dropdown-item ${location.pathname === '/app/sites' ? 'active' : ''}`}
+                    >
+                      <div className="nav-item-icon">
+                        <Building2 size={14} />
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 600 }}>Hospital Trial Centers</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>8 Participating medical colleges</div>
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Dropdown 2: Patients & Visits */}
+              <button
+                onClick={() => navigate('/app/patients')}
+                className={`nav-btn ${location.pathname.includes('/patients') ? 'active' : ''}`}
+              >
+                <Users size={15} />
+                <span>Patients & Visits</span>
+              </button>
+
+              {/* Dropdown 3: Safety & Adverse Events */}
+              <button
+                onClick={() => navigate('/app/safety')}
+                className={`nav-btn ${location.pathname.includes('/safety') && !location.pathname.includes('-dashboard') ? 'active' : ''}`}
+              >
+                <AlertOctagon size={15} />
+                <span>Safety & 24h Alerts</span>
+              </button>
+
+              {/* Dropdown 4: Data Quality & Governance */}
+              <div className="nav-dropdown-wrapper">
+                <button
+                  onClick={() => toggleDropdown('quality')}
+                  className={`nav-btn ${openDropdown === 'quality' || location.pathname.includes('/quality') || location.pathname.includes('/audit') || location.pathname.includes('/export') ? 'active' : ''}`}
+                >
+                  <FileCheck2 size={15} />
+                  <span>Quality & Audits</span>
+                  <ChevronDown size={13} />
+                </button>
+
+                {openDropdown === 'quality' && (
+                  <div className="nav-dropdown-menu">
+                    <button
+                      onClick={() => navigate('/app/quality')}
+                      className={`nav-dropdown-item ${location.pathname === '/app/quality' ? 'active' : ''}`}
+                    >
+                      <div className="nav-item-icon">
+                        <FileCheck2 size={14} />
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 600 }}>Discrepancies & Queries</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Source data verification queue</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => navigate('/app/audit')}
+                      className={`nav-dropdown-item ${location.pathname === '/app/audit' ? 'active' : ''}`}
+                    >
+                      <div className="nav-item-icon">
+                        <FileLock2 size={14} />
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 600 }}>Audit Trail</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Permanent verified clinical logs</div>
+                      </div>
+                    </button>
+
+                    <button
+                      onClick={() => navigate('/app/export')}
+                      className={`nav-dropdown-item ${location.pathname === '/app/export' ? 'active' : ''}`}
+                    >
+                      <div className="nav-item-icon">
+                        <Share2 size={14} />
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 600 }}>Official Clinical Reports</div>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Official dossiers & patient summaries</div>
+                      </div>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </nav>
+          </div>
+
+          {/* Right: Role Switcher, Public Link & User Profile */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            {/* Quick Role Switcher Pill */}
+            <div className="nav-dropdown-wrapper">
+              <button
+                onClick={() => setRoleSwitchOpen(!roleSwitchOpen)}
+                className="btn btn-secondary btn-sm"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78125rem', padding: '5px 10px' }}
+              >
+                <UserCheck size={13} color="var(--clinical-cobalt)" />
+                <span>Switch Role</span>
+                <ChevronDown size={11} />
+              </button>
+
+              {roleSwitchOpen && (
+                <div className="nav-dropdown-menu" style={{ right: 0, left: 'auto', width: '280px' }}>
+                  <div style={{ padding: '8px 12px 6px', fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
+                    Select Clinical Role
+                  </div>
+                  {allRoles.map((r, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => {
+                        setRoleSwitchOpen(false);
+                        handleRoleSelect(r.role, r.email);
+                      }}
+                      className={`nav-dropdown-item ${currentRole === r.role ? 'active' : ''}`}
+                    >
+                      <div>
+                        <div style={{ fontWeight: 600, fontSize: '0.8125rem' }}>{r.title}</div>
+                        <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>{r.desc}</div>
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Public Website Link */}
+            <button
+              onClick={() => navigate('/')}
+              className="btn btn-secondary btn-sm"
+              style={{ display: 'flex', alignItems: 'center', gap: '4px', padding: '5px 10px', fontSize: '0.78125rem' }}
+            >
+              <span>Public Site</span>
+              <ExternalLink size={11} />
+            </button>
+
+            {/* User Profile Info */}
+            <div className="nav-dropdown-wrapper">
+              <div
+                onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '9px',
+                  padding: '4px 8px',
+                  borderRadius: 'var(--radius-sm)',
+                  cursor: 'pointer',
+                  background: profileDropdownOpen ? 'var(--bg-subtle)' : 'transparent',
+                  border: '1px solid',
+                  borderColor: profileDropdownOpen ? 'var(--border-medium)' : 'transparent'
+                }}
+              >
+                <div style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  background: 'var(--clinical-cobalt-light)',
+                  color: 'var(--clinical-cobalt)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: '0.8125rem',
+                  border: '1px solid #bfdbfe'
+                }}>
+                  {currentUser?.full_name ? currentUser.full_name[0] : 'U'}
+                </div>
+
+                <div style={{ textAlign: 'left', lineHeight: 1.2 }}>
+                  <div style={{ fontSize: '0.8125rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+                    {currentUser?.full_name || 'Dr. Tanuja Nesari'}
+                  </div>
+                  <div style={{ fontSize: '0.6875rem', color: 'var(--text-muted)' }}>
+                    {roleLabels[currentRole]?.title || currentRole}
+                  </div>
+                </div>
+
+                <ChevronDown size={13} color="var(--text-muted)" />
+              </div>
+
+              {profileDropdownOpen && (
+                <div className="nav-dropdown-menu" style={{ right: 0, left: 'auto', width: '240px' }}>
+                  <div style={{ padding: '8px 12px', borderBottom: '1px solid var(--border-subtle)', marginBottom: '4px' }}>
+                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Signed in as</div>
+                    <strong style={{ fontSize: '0.8125rem', color: 'var(--text-primary)' }}>{currentUser?.email}</strong>
+                  </div>
+
+                  <button
+                    onClick={() => { setProfileDropdownOpen(false); onLogout(); navigate('/login'); }}
+                    style={{
+                      width: '100%',
+                      textAlign: 'left',
+                      padding: '8px 12px',
+                      borderRadius: 'var(--radius-xs)',
+                      background: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      fontSize: '0.8125rem',
+                      color: 'var(--danger-rose)',
+                      cursor: 'pointer'
+                    }}
+                    onMouseEnter={(e) => e.currentTarget.style.background = 'var(--danger-rose-light)'}
+                    onMouseLeave={(e) => e.currentTarget.style.background = 'none'}
+                  >
+                    <LogOut size={13} />
+                    <span>Sign Out</span>
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* 2. SUB-BAR: ACTIVE TRIAL CONTEXT & BREADCRUMB */}
+        <div style={{
+          background: '#f8fafc',
+          borderTop: '1px solid var(--border-subtle)',
+          padding: '8px 24px',
+          fontSize: '0.78125rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{ color: 'var(--text-muted)' }}>Active Trial:</span>
+            <span className="badge badge-emerald" style={{ padding: '2px 8px', fontSize: '0.65rem' }}>
+              Phase III Multi-Centric
+            </span>
+            <strong style={{ color: 'var(--text-primary)' }}>AIIA-PCOS-001</strong>
+            <span style={{ color: 'var(--text-muted)' }}>· Ayush-PCOS Kwatha & Vati vs Standard Care (320 / 500 Participants)</span>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
+            <span>Portal</span>
+            <ChevronRight size={12} />
+            <strong style={{ color: 'var(--clinical-cobalt)' }}>{getPageTitle()}</strong>
+          </div>
+        </div>
+      </header>
+
+      {/* 3. MAIN CONTENT CONTAINER (MINIMAL, UNCLUTTERED & SPACIOUS) */}
+      <main style={{
+        flex: 1,
+        maxWidth: '1440px',
+        width: '100%',
+        margin: '0 auto',
+        padding: '28px 24px',
+        overflowY: 'auto'
+      }}>
+        {children}
+      </main>
+    </div>
+  );
+};

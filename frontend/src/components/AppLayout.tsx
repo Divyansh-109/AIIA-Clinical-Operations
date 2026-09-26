@@ -118,9 +118,25 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', background: 'var(--bg-primary)' }}>
+    <div className="teal-wavy-hero-bg bg-decorative-shapes" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', position: 'relative' }}>
+      {/* Organic Flowing Teal Waves Graphic Layer Across All Portal Pages */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
+        <svg style={{ position: 'absolute', top: 0, right: 0, width: '65%', height: '500px', opacity: 0.18 }} viewBox="0 0 900 600" preserveAspectRatio="none">
+          <path fill="url(#app-teal-wave-grad)" d="M150 0 C400 180 350 380 900 600 L900 0 Z" />
+          <defs>
+            <linearGradient id="app-teal-wave-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#0F766E" stopOpacity="0.3" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '220px', opacity: 0.15 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="#0F766E" d="M0,128L80,144C160,160,320,192,480,186.7C640,181,800,139,960,128C1120,117,1280,139,1360,149.3L1440,160L1440,320L0,320Z" />
+        </svg>
+      </div>
+
       {/* 1. TOP HEADER NAVIGATION (ENTERPRISE VEEVA VAULT STANDARD) */}
-      <header className="top-nav-bar" ref={navRef}>
+      <header className="top-nav-bar" ref={navRef} style={{ position: 'relative', zIndex: 10 }}>
         <div style={{
           maxWidth: '1440px',
           margin: '0 auto',
@@ -140,12 +156,12 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
                 width: '36px',
                 height: '36px',
                 borderRadius: '8px',
-                background: 'linear-gradient(135deg, #0b1a2d 0%, #0066cc 100%)',
+                background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#ffffff',
-                boxShadow: '0 2px 6px rgba(0, 102, 204, 0.25)'
+                boxShadow: '0 2px 6px rgba(15, 118, 110, 0.25)'
               }}>
                 <Shield size={19} strokeWidth={2.2} />
               </div>
@@ -311,7 +327,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
                 className="btn btn-secondary btn-sm"
                 style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78125rem', padding: '5px 10px' }}
               >
-                <UserCheck size={13} color="var(--clinical-cobalt)" />
+                <UserCheck size={13} color="var(--primary-teal)" />
                 <span>Switch Role</span>
                 <ChevronDown size={11} />
               </button>
@@ -370,14 +386,14 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
                   width: '32px',
                   height: '32px',
                   borderRadius: '50%',
-                  background: 'var(--clinical-cobalt-light)',
-                  color: 'var(--clinical-cobalt)',
+                  background: 'var(--light-teal)',
+                  color: 'var(--primary-teal)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 700,
                   fontSize: '0.8125rem',
-                  border: '1px solid #bfdbfe'
+                  border: '1px solid #bfe8e2'
                 }}>
                   {currentUser?.full_name ? currentUser.full_name[0] : 'U'}
                 </div>
@@ -430,8 +446,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
 
         {/* 2. SUB-BAR: ACTIVE TRIAL CONTEXT & BREADCRUMB */}
         <div style={{
-          background: '#f8fafc',
-          borderTop: '1px solid var(--border-subtle)',
+          background: 'linear-gradient(90deg, #FFFFFF 0%, #F0FBFA 100%)',
+          borderTop: '1px solid #CDE9E5',
           padding: '8px 24px',
           fontSize: '0.78125rem',
           display: 'flex',
@@ -450,7 +466,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
             <span>Portal</span>
             <ChevronRight size={12} />
-            <strong style={{ color: 'var(--clinical-cobalt)' }}>{getPageTitle()}</strong>
+            <strong style={{ color: 'var(--primary-teal)' }}>{getPageTitle()}</strong>
           </div>
         </div>
       </header>

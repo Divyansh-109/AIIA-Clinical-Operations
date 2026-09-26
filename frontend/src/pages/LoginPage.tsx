@@ -130,16 +130,32 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
   };
 
   return (
-    <div style={{
+    <div className="teal-wavy-hero-bg bg-decorative-shapes" style={{
       minHeight: '100vh',
       display: 'flex',
       flexDirection: 'column',
-      background: 'var(--bg-primary)'
+      position: 'relative'
     }}>
+      {/* Organic Flowing Teal Waves Graphic Layer */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
+        <svg style={{ position: 'absolute', top: 0, right: 0, width: '65%', height: '100%', opacity: 0.18 }} viewBox="0 0 900 600" preserveAspectRatio="none">
+          <path fill="url(#login-teal-wave-grad)" d="M150 0 C400 180 350 380 900 600 L900 0 Z" />
+          <defs>
+            <linearGradient id="login-teal-wave-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#0F766E" stopOpacity="0.3" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '180px', opacity: 0.15 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="#0F766E" d="M0,128L80,144C160,160,320,192,480,186.7C640,181,800,139,960,128C1120,117,1280,139,1360,149.3L1440,160L1440,320L0,320Z" />
+        </svg>
+      </div>
+
       {/* Enterprise Top Header */}
-      <header style={{
-        background: '#ffffff',
-        borderBottom: '1px solid var(--border-subtle)',
+      <header className="top-nav-bar" style={{
+        position: 'relative',
+        zIndex: 10,
         padding: '0 32px',
         height: '68px',
         display: 'flex',
@@ -154,7 +170,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
             width: '38px',
             height: '38px',
             borderRadius: '10px',
-            background: 'linear-gradient(135deg, #0b1a2d 0%, #0066cc 100%)',
+            background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -248,7 +264,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 <label style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-primary)' }}>
                   Password
                 </label>
-                <span style={{ fontSize: '0.75rem', color: 'var(--clinical-cobalt)', cursor: 'pointer' }}>
+                <span style={{ fontSize: '0.75rem', color: 'var(--primary-teal)', cursor: 'pointer' }}>
                   Forgot password?
                 </span>
               </div>
@@ -291,7 +307,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
                 padding: '12px',
                 fontSize: '0.9375rem',
                 fontWeight: 700,
-                background: 'var(--vault-navy)',
+                background: 'var(--primary-teal)',
                 boxShadow: 'var(--shadow-sm)'
               }}
             >

@@ -65,18 +65,13 @@ export const ProtocolPage: React.FC<ProtocolPageProps> = ({ flagshipStudy }) => 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. HEADER */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-lg)',
-        padding: '28px 32px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         boxShadow: 'var(--shadow-xs)'
       }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
             <span className="badge badge-blue">SMART CLINICAL RULES</span>
             <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
               Protocol Guardian Window Checks & Version Management
@@ -111,7 +106,7 @@ export const ProtocolPage: React.FC<ProtocolPageProps> = ({ flagshipStudy }) => 
             </h3>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '16px', marginBottom: '14px' }}>
+          <div className="responsive-kpi-grid" style={{ display: 'grid', marginBottom: '14px' }}>
             <div style={{ background: '#ffffff', padding: '14px', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-subtle)' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Affected Patients</div>
               <div style={{ fontSize: '1.375rem', fontWeight: 800, color: 'var(--text-primary)' }}>{impactData.affected_participants_count} Cohort</div>
@@ -137,7 +132,7 @@ export const ProtocolPage: React.FC<ProtocolPageProps> = ({ flagshipStudy }) => 
       )}
 
       {/* 3. PROTOCOL DEVIATIONS REGISTER */}
-      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: 0, overflow: 'hidden' }}>
         <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
             <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>

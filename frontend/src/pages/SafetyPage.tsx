@@ -117,18 +117,13 @@ export const SafetyPage: React.FC<SafetyPageProps> = ({ flagshipStudy, currentRo
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. HEADER */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-lg)',
-        padding: '28px 32px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         boxShadow: 'var(--shadow-xs)'
       }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
             <span className="badge badge-rose">PATIENT SAFETY & SURVEILLANCE</span>
             <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
               National Pharmacovigilance Program for Ayush (NPvCC) · CDSCO Standards
@@ -383,7 +378,7 @@ export const SafetyPage: React.FC<SafetyPageProps> = ({ flagshipStudy, currentRo
           Paste raw clinical doctor notes. AI assists by identifying reported symptoms and severity, but <strong>never saves without doctor approval.</strong>
         </p>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '20px' }}>
+        <div className="dashboard-split-grid" style={{ display: 'grid' }}>
           <div>
             <textarea
               rows={4}
@@ -474,7 +469,7 @@ export const SafetyPage: React.FC<SafetyPageProps> = ({ flagshipStudy, currentRo
       </div>
 
       {/* 5. MASTER ADVERSE EVENT REGISTER */}
-      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: 0, overflow: 'hidden' }}>
         <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border-subtle)' }}>
           <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
             Master Adverse Event Register

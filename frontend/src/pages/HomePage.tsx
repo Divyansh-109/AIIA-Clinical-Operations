@@ -80,7 +80,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </div>
 
           {/* Navigation Links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '32px', fontSize: '0.84375rem', fontWeight: 600 }}>
+          <div className="desktop-nav-only" style={{ alignItems: 'center', gap: '32px', fontSize: '0.84375rem', fontWeight: 600 }}>
             <a href="#solutions" style={{ color: 'var(--text-secondary)' }}>Clinical Suite</a>
             <a href="#active-trials" style={{ color: 'var(--text-secondary)' }}>Active Studies</a>
             <a href="#patient-care" style={{ color: 'var(--text-secondary)' }}>Patient Safety & Care</a>
@@ -130,10 +130,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
         </div>
 
         <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{
+          <div className="home-hero-grid" style={{
             display: 'grid',
-            gridTemplateColumns: '1.15fr 0.85fr',
-            gap: '52px',
             alignItems: 'center'
           }}>
             {/* Left: Authoritative, Approachable Value Proposition */}
@@ -194,10 +192,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
               </div>
 
               {/* Four Trust Stats */}
-              <div style={{
+              <div className="home-stats-grid" style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(4, 1fr)',
-                gap: '16px',
                 borderTop: '1px solid var(--border-subtle)',
                 paddingTop: '28px'
               }}>
@@ -284,7 +280,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div className="home-pillars-grid" style={{ display: 'grid' }}>
             {/* Module 1 */}
             <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{
@@ -410,10 +406,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </svg>
         </div>
         <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{
+          <div className="dashboard-split-grid" style={{
             display: 'grid',
-            gridTemplateColumns: '0.95fr 1.05fr',
-            gap: '56px',
             alignItems: 'center'
           }}>
             {/* Left: Patient Consultation Visual */}
@@ -592,7 +586,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             boxShadow: 'var(--shadow-md)',
             background: '#ffffff'
           }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '40px', alignItems: 'center' }}>
+            <div className="dashboard-split-grid" style={{ display: 'grid', alignItems: 'center' }}>
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
                   <span className="badge badge-emerald">PHASE III MULTI-HOSPITAL STUDY</span>
@@ -711,7 +705,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+          <div className="home-sites-grid" style={{ display: 'grid' }}>
             {[
               {
                 city: 'New Delhi',
@@ -800,10 +794,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
         borderTop: '1px solid #1e293b'
       }}>
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
-          <div style={{
+          <div className="home-pillars-grid" style={{
             display: 'grid',
-            gridTemplateColumns: '1.4fr 1fr 1fr 1fr',
-            gap: '40px',
             marginBottom: '48px'
           }}>
             <div>

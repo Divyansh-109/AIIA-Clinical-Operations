@@ -93,14 +93,9 @@ export const SafetyDashboard: React.FC<SafetyDashboardProps> = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. TOP 24-HOUR STATUTORY COUNTDOWN CLOCK BANNER */}
-      <div style={{
+      <div className="safety-countdown-banner" style={{
         background: reportDispatched ? 'var(--ayush-emerald-light)' : '#fff1f2',
         border: `1px solid ${reportDispatched ? '#a7f3d0' : '#fecdd3'}`,
-        borderRadius: 'var(--radius-xl)',
-        padding: '24px 28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         boxShadow: 'var(--shadow-sm)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
@@ -119,7 +114,7 @@ export const SafetyDashboard: React.FC<SafetyDashboardProps> = () => {
           </div>
 
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
               <span className={`badge ${reportDispatched ? 'badge-emerald' : 'badge-rose'}`}>
                 {reportDispatched ? 'CDSCO NOTIFICATION DISPATCHED' : 'ACTIVE 24-HOUR STATUTORY SAFETY CLOCK'}
               </span>
@@ -143,7 +138,7 @@ export const SafetyDashboard: React.FC<SafetyDashboardProps> = () => {
         </div>
 
         {/* Countdown Timer Display & CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
           {!reportDispatched ? (
             <>
               <div style={{ textAlign: 'right' }}>
@@ -185,7 +180,7 @@ export const SafetyDashboard: React.FC<SafetyDashboardProps> = () => {
       </div>
 
       {/* 2. FOUR KEY SAFETY VIGILANCE METRICS */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+      <div className="responsive-kpi-grid" style={{ display: 'grid' }}>
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
             <span style={{ fontSize: '0.78125rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>

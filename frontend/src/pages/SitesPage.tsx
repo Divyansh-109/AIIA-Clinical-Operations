@@ -29,18 +29,13 @@ export const SitesPage: React.FC<SitesPageProps> = ({ flagshipStudy }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. HEADER */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-lg)',
-        padding: '28px 32px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         boxShadow: 'var(--shadow-xs)'
       }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
             <span className="badge badge-emerald">MULTI-CENTRIC NETWORK</span>
             <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
               8 Certified Teaching & Research Hospitals Across India
@@ -64,7 +59,7 @@ export const SitesPage: React.FC<SitesPageProps> = ({ flagshipStudy }) => {
       </div>
 
       {/* 2. SITES GRID (UNCLUTTERED & VISUAL) */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
         {sites.map((s) => {
           let scenarioText = 'Operational Benchmark';
           let badgeClass = 'badge-emerald';

@@ -71,18 +71,13 @@ export const DataQualityPage: React.FC<DataQualityPageProps> = ({ flagshipStudy,
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. HEADER */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-lg)',
-        padding: '28px 32px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         boxShadow: 'var(--shadow-xs)'
       }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
             <span className="badge badge-amber">SOURCE DATA VERIFICATION</span>
             <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
               ALCOA+ Traceability · Discrepancy Query Management
@@ -108,7 +103,7 @@ export const DataQualityPage: React.FC<DataQualityPageProps> = ({ flagshipStudy,
       </div>
 
       {/* 2. STATS ROW */}
-      <div className="grid-3">
+      <div className="responsive-kpi-grid" style={{ display: 'grid' }}>
         <div className="card">
           <div style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-muted)' }}>TOTAL LOGGED QUERIES</div>
           <div style={{ fontSize: '2rem', fontWeight: 800, color: 'var(--text-primary)' }}>
@@ -137,7 +132,7 @@ export const DataQualityPage: React.FC<DataQualityPageProps> = ({ flagshipStudy,
       </div>
 
       {/* 3. DISCREPANCIES TABLE */}
-      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: 0, overflow: 'hidden' }}>
         <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border-subtle)' }}>
           <h2 style={{ fontSize: '1.125rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
             Active Discrepancy Queue

@@ -55,14 +55,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. TOP GREETING & INSTITUTIONAL ADMIN HEADER */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-xl)',
-        padding: '24px 28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         boxShadow: 'var(--shadow-sm)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -74,12 +69,13 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = () => {
             color: 'var(--purple-accent)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            flexShrink: 0
           }}>
             <Settings size={24} />
           </div>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px', flexWrap: 'wrap' }}>
               <h1 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                 Directorate of Research Administration Desk
               </h1>
@@ -91,7 +87,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = () => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <button onClick={() => navigate('/app/audit')} className="btn btn-secondary btn-sm">
             <span>Audit Trail Ledger</span>
           </button>
@@ -103,7 +99,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = () => {
       </div>
 
       {/* 2. FOUR KEY ADMIN METRICS */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+      <div className="responsive-kpi-grid" style={{ display: 'grid' }}>
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
             <span style={{ fontSize: '0.78125rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
@@ -166,7 +162,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = () => {
       </div>
 
       {/* 3. TWO-COLUMN SPLIT: PORTFOLIO & CLINICAL GOVERNANCE */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '24px' }}>
+      <div className="dashboard-split-grid" style={{ display: 'grid' }}>
         {/* Left Column: Multi-Study Institutional Portfolio */}
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>

@@ -157,18 +157,13 @@ export const PatientsPage: React.FC<PatientsPageProps> = ({ flagshipStudy, curre
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. HEADER WITH ACTIONS */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-lg)',
-        padding: '28px 32px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
         boxShadow: 'var(--shadow-xs)'
       }}>
         <div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px', flexWrap: 'wrap' }}>
             <span className="badge badge-emerald">PARTICIPANT MANAGEMENT</span>
             <span style={{ fontSize: '0.8125rem', color: 'var(--text-muted)' }}>
               De-Identified Clinical Subjects · Protocol Schedule Tracking
@@ -183,7 +178,7 @@ export const PatientsPage: React.FC<PatientsPageProps> = ({ flagshipStudy, curre
           </p>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
           <button
             onClick={() => setShowEnrollModal(true)}
             className="btn btn-cobalt"
@@ -231,10 +226,11 @@ export const PatientsPage: React.FC<PatientsPageProps> = ({ flagshipStudy, curre
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
+        flexWrap: 'wrap',
         gap: '16px'
       }}>
         {/* Search Input */}
-        <div style={{ position: 'relative', width: '320px' }}>
+        <div style={{ position: 'relative', width: '100%', maxWidth: '320px' }}>
           <input
             type="text"
             value={searchTerm}
@@ -247,13 +243,13 @@ export const PatientsPage: React.FC<PatientsPageProps> = ({ flagshipStudy, curre
         </div>
 
         {/* Site Filter */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
           <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--text-secondary)' }}>Hospital Site:</span>
           <select
             value={selectedSiteFilter}
             onChange={(e) => setSelectedSiteFilter(e.target.value)}
             className="input-select"
-            style={{ width: '220px' }}
+            style={{ width: '100%', maxWidth: '220px' }}
           >
             <option value="ALL">All 8 Hospital Sites</option>
             {sites.map((s) => (
@@ -270,7 +266,7 @@ export const PatientsPage: React.FC<PatientsPageProps> = ({ flagshipStudy, curre
       </div>
 
       {/* 3. PATIENTS TABLE */}
-      <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
+      <div className="card table-responsive" style={{ padding: 0, overflow: 'hidden' }}>
         <table className="table" style={{ width: '100%' }}>
           <thead>
             <tr>

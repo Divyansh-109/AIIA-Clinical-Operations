@@ -558,3 +558,232 @@ button {
   height: 100%;
   transition: width 0.3s ease;
 }
+
+/* =========================================================
+   COMPREHENSIVE RESPONSIVE DESIGN SYSTEM (MOBILE & TABLET)
+   ========================================================= */
+
+/* Responsive Layout Helpers */
+.responsive-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.dashboard-split-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 24px;
+}
+
+.home-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 52px;
+  align-items: center;
+}
+
+.home-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.home-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.home-trials-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 32px;
+}
+
+.home-sites-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.login-layout-grid {
+  display: grid;
+  grid-template-columns: 440px 1fr;
+  gap: 44px;
+  align-items: start;
+}
+
+.responsive-header-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-xs);
+  gap: 16px;
+}
+
+.safety-countdown-banner {
+  border-radius: var(--radius-xl);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-sm);
+  gap: 20px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Desktop vs Mobile Nav elements */
+.desktop-nav-only {
+  display: flex !important;
+}
+
+.mobile-nav-toggle {
+  display: none !important;
+}
+
+/* TABLET BREAKPOINT (<= 1024px) */
+@media (max-width: 1024px) {
+  .desktop-nav-only {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: flex !important;
+  }
+  .responsive-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .dashboard-split-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .home-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .home-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .home-trials-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .home-sites-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .login-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* MOBILE PHONE BREAKPOINT (<= 768px) */
+@media (max-width: 768px) {
+  body {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 16px 14px !important;
+  }
+
+  .top-nav-bar {
+    padding: 0 16px !important;
+    height: 60px !important;
+  }
+
+  .responsive-header-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 16px;
+    gap: 16px;
+  }
+
+  .responsive-header-card > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .safety-countdown-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 16px;
+  }
+
+  .safety-countdown-banner > div:last-child {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .responsive-kpi-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .home-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .home-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .home-sites-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 16px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  /* Make tables horizontally scrollable without breaking page width */
+  table.table {
+    min-width: 580px;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.8125rem;
+  }
+
+  .btn-lg {
+    padding: 10px 18px;
+    font-size: 0.875rem;
+  }
+}
+
+/* SMALL MOBILE (<= 480px) */
+@media (max-width: 480px) {
+  .home-stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  h1 {
+    font-size: 1.55rem !important;
+  }
+  
+  h2 {
+    font-size: 1.25rem !important;
+  }
+}

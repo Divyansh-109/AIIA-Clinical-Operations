@@ -19,7 +19,9 @@ import {
   HeartPulse,
   Settings,
   Sparkles,
-  ChevronRight
+  ChevronRight,
+  Menu,
+  X
 } from 'lucide-react';
 import { getRoleDashboardPath } from '../pages/LoginPage';
 
@@ -43,10 +45,11 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Dropdown open states
+  // Dropdown & mobile drawer open states
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [roleSwitchOpen, setRoleSwitchOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Close dropdowns on outside click
   const navRef = useRef<HTMLDivElement>(null);
@@ -67,6 +70,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
     setOpenDropdown(null);
     setProfileDropdownOpen(false);
     setRoleSwitchOpen(false);
+    setMobileMenuOpen(false);
   }, [location.pathname]);
 
   const toggleDropdown = (name: string) => {
@@ -175,10 +179,10 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
               </div>
             </div>
 
-            <div style={{ height: '24px', width: '1px', background: 'var(--border-subtle)' }}></div>
+            <div className="desktop-nav-only" style={{ height: '24px', width: '1px', background: 'var(--border-subtle)' }}></div>
 
             {/* Nav Menu Items with Dropdowns */}
-            <nav style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+            <nav className="desktop-nav-only" style={{ alignItems: 'center', gap: '2px' }}>
               {/* My Desk (Dynamic based on logged in role) */}
               <button
                 onClick={() => navigate(myDeskPath)}
@@ -318,8 +322,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
             </nav>
           </div>
 
-          {/* Right: Role Switcher, Public Link & User Profile */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          {/* Right: Role Switcher, Public Link & User Profile (Desktop) */}
+          <div className="desktop-nav-only" style={{ alignItems: 'center', gap: '12px' }}>
             {/* Quick Role Switcher Pill */}
             <div className="nav-dropdown-wrapper">
               <button
@@ -442,7 +446,197 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
               )}
             </div>
           </div>
+
+          {/* Mobile hamburger button + current role badge */}
+          <div className="mobile-nav-toggle" style={{ alignItems: 'center', gap: '8px' }}>
+            <span className={`badge ${roleLabels[currentRole]?.color || 'badge-teal'}`} style={{ fontSize: '0.6875rem', padding: '3px 8px' }}>
+              {currentRole}
+            </span>
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="btn btn-secondary"
+              style={{ padding: '6px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              aria-label="Toggle navigation menu"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
+
+        {/* MOBILE NAVIGATION DRAWER */}
+        {mobileMenuOpen && (
+          <div style={{
+            background: 'var(--bg-card)',
+            borderBottom: '2px solid var(--border-medium)',
+            padding: '16px 20px',
+            boxShadow: 'var(--shadow-lg)',
+            maxHeight: 'calc(100vh - 120px)',
+            overflowY: 'auto'
+          }}>
+            {/* User Profile Info card */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              padding: '12px 14px',
+              background: 'var(--bg-subtle)',
+              borderRadius: 'var(--radius-sm)',
+              marginBottom: '16px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <div style={{
+                  width: '36px',
+                  height: '36px',
+                  borderRadius: '50%',
+                  background: 'var(--light-teal)',
+                  color: 'var(--primary-teal)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontWeight: 700,
+                  fontSize: '0.9rem'
+                }}>
+                  {currentUser?.full_name ? currentUser.full_name[0] : 'U'}
+                </div>
+                <div>
+                  <div style={{ fontWeight: 700, fontSize: '0.875rem', color: 'var(--text-primary)' }}>
+                    {currentUser?.full_name || 'Dr. Tanuja Nesari'}
+                  </div>
+                  <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                    {currentUser?.email}
+                  </div>
+                </div>
+              </div>
+              <span className={`badge ${roleLabels[currentRole]?.color || 'badge-teal'}`}>
+                {currentRole}
+              </span>
+            </div>
+
+            {/* Quick Role Switcher section */}
+            <div style={{ marginBottom: '16px' }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '8px' }}>
+                Switch Clinical Role
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '6px' }}>
+                {allRoles.map((r, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      handleRoleSelect(r.role, r.email);
+                    }}
+                    style={{
+                      padding: '8px 10px',
+                      borderRadius: 'var(--radius-xs)',
+                      border: '1px solid',
+                      borderColor: currentRole === r.role ? 'var(--primary-teal)' : 'var(--border-subtle)',
+                      background: currentRole === r.role ? 'var(--light-teal)' : 'var(--bg-card)',
+                      color: currentRole === r.role ? 'var(--primary-teal)' : 'var(--text-primary)',
+                      fontWeight: 600,
+                      fontSize: '0.75rem',
+                      textAlign: 'left',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {r.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Workspaces & Clinical Desks */}
+            <div style={{ marginBottom: '16px' }}>
+              <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: '8px' }}>
+                Workspaces & Desks
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate(myDeskPath); }}
+                  className={`nav-dropdown-item ${location.pathname.includes('-dashboard') ? 'active' : ''}`}
+                >
+                  <LayoutDashboard size={16} />
+                  <span style={{ fontWeight: 600 }}>My Desk ({roleLabels[currentRole]?.title || currentRole})</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/study'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/study' ? 'active' : ''}`}
+                >
+                  <FolderGit2 size={16} />
+                  <span>Active Trial Overview</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/protocol'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/protocol' ? 'active' : ''}`}
+                >
+                  <ShieldCheck size={16} />
+                  <span>Visit Window Guardian</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/sites'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/sites' ? 'active' : ''}`}
+                >
+                  <Building2 size={16} />
+                  <span>Hospital Trial Centers</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/patients'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/patients' ? 'active' : ''}`}
+                >
+                  <Users size={16} />
+                  <span>Patients & Scheduled Visits</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/safety'); }}
+                  className={`nav-dropdown-item ${location.pathname.includes('/safety') && !location.pathname.includes('-dashboard') ? 'active' : ''}`}
+                >
+                  <AlertOctagon size={16} />
+                  <span>Safety Vigilance & 24h Alerts</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/quality'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/quality' ? 'active' : ''}`}
+                >
+                  <FileCheck2 size={16} />
+                  <span>Discrepancies & Verification</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/audit'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/audit' ? 'active' : ''}`}
+                >
+                  <FileLock2 size={16} />
+                  <span>Permanent Audit Trail</span>
+                </button>
+                <button
+                  onClick={() => { setMobileMenuOpen(false); navigate('/app/export'); }}
+                  className={`nav-dropdown-item ${location.pathname === '/app/export' ? 'active' : ''}`}
+                >
+                  <Share2 size={16} />
+                  <span>Official Clinical Reports</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Footer actions: Public Site & Logout */}
+            <div style={{ display: 'flex', gap: '10px', paddingTop: '12px', borderTop: '1px solid var(--border-subtle)' }}>
+              <button
+                onClick={() => { setMobileMenuOpen(false); navigate('/'); }}
+                className="btn btn-secondary"
+                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+              >
+                <span>Public Site</span>
+                <ExternalLink size={13} />
+              </button>
+              <button
+                onClick={() => { setMobileMenuOpen(false); onLogout(); navigate('/login'); }}
+                className="btn btn-danger"
+                style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}
+              >
+                <LogOut size={13} />
+                <span>Sign Out</span>
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* 2. SUB-BAR: ACTIVE TRIAL CONTEXT & BREADCRUMB */}
         <div style={{
@@ -452,15 +646,17 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
           fontSize: '0.78125rem',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'space-between'
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '8px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <span style={{ color: 'var(--text-muted)' }}>Active Trial:</span>
             <span className="badge badge-emerald" style={{ padding: '2px 8px', fontSize: '0.65rem' }}>
-              Phase III Multi-Centric
+              Phase III
             </span>
             <strong style={{ color: 'var(--text-primary)' }}>AIIA-PCOS-001</strong>
-            <span style={{ color: 'var(--text-muted)' }}>· Ayush-PCOS Kwatha & Vati vs Standard Care (320 / 500 Participants)</span>
+            <span className="desktop-nav-only" style={{ color: 'var(--text-muted)' }}>· Ayush-PCOS Kwatha & Vati vs Standard Care (320 / 500 Participants)</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>

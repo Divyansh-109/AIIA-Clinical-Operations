@@ -64,8 +64,8 @@ export const StudyOverviewPage: React.FC<StudyOverviewPageProps> = ({ flagshipSt
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. STUDY MASTER HEADER */}
-      <div className="card" style={{ padding: '28px 32px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+      <div className="card" style={{ padding: '24px 28px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px', flexWrap: 'wrap', gap: '16px' }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
               <span className="badge badge-emerald">{flagshipStudy?.study_code || 'AIIA-PCOS-001'}</span>
@@ -96,15 +96,13 @@ export const StudyOverviewPage: React.FC<StudyOverviewPageProps> = ({ flagshipSt
         </div>
 
         {/* Ayurvedic Formulation Profile */}
-        <div style={{
+        <div className="responsive-kpi-grid" style={{
           background: 'var(--bg-primary)',
           border: '1px solid var(--border-subtle)',
           borderRadius: 'var(--radius-md)',
           padding: '16px 20px',
           marginBottom: '20px',
           display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '16px',
           fontSize: '0.8125rem'
         }}>
           <div>
@@ -167,7 +165,7 @@ export const StudyOverviewPage: React.FC<StudyOverviewPageProps> = ({ flagshipSt
       </div>
 
       {/* 2. FOUR HEALTH DIMENSIONS (EXPLAINABLE, UNCLUTTERED) */}
-      <div className="grid-4">
+      <div className="responsive-kpi-grid" style={{ display: 'grid' }}>
         <div
           onClick={() => navigate('/app/patients')}
           className="card"
@@ -270,7 +268,7 @@ export const StudyOverviewPage: React.FC<StudyOverviewPageProps> = ({ flagshipSt
           </button>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
+        <div className="responsive-kpi-grid" style={{ display: 'grid' }}>
           {sites.slice(0, 4).map((s) => (
             <div
               key={s.id}

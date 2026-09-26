@@ -197,15 +197,13 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
       </header>
 
       {/* Main Container */}
-      <main style={{
+      <main className="login-layout-grid" style={{
         flex: 1,
         maxWidth: '1280px',
         width: '100%',
         margin: '0 auto',
-        padding: '48px 24px',
+        padding: '32px 20px',
         display: 'grid',
-        gridTemplateColumns: '450px 1fr',
-        gap: '44px',
         alignItems: 'start'
       }}>
         {/* Left Column: Official Sign In Form */}

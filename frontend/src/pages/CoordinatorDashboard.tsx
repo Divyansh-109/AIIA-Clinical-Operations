@@ -89,14 +89,9 @@ export const CoordinatorDashboard: React.FC<CoordinatorDashboardProps> = () => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
       {/* 1. TOP GREETING & QUICK ACTION BAR */}
-      <div style={{
+      <div className="responsive-header-card" style={{
         background: '#ffffff',
         border: '1px solid var(--border-subtle)',
-        borderRadius: 'var(--radius-xl)',
-        padding: '24px 28px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
         boxShadow: 'var(--shadow-sm)'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -108,12 +103,13 @@ export const CoordinatorDashboard: React.FC<CoordinatorDashboardProps> = () => {
             color: 'var(--clinical-cobalt)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            flexShrink: 0
           }}>
             <ClipboardList size={24} />
           </div>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px', flexWrap: 'wrap' }}>
               <h1 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--text-primary)' }}>
                 Site Study Coordinator Desk
               </h1>
@@ -125,7 +121,7 @@ export const CoordinatorDashboard: React.FC<CoordinatorDashboardProps> = () => {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: '10px' }}>
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <button
             onClick={() => navigate('/app/patients')}
             className="btn btn-cobalt btn-sm"
@@ -137,7 +133,7 @@ export const CoordinatorDashboard: React.FC<CoordinatorDashboardProps> = () => {
       </div>
 
       {/* 2. FOUR KEY COORDINATOR METRIC CARDS */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+      <div className="responsive-kpi-grid" style={{ display: 'grid' }}>
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
             <span style={{ fontSize: '0.78125rem', fontWeight: 600, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
@@ -200,7 +196,7 @@ export const CoordinatorDashboard: React.FC<CoordinatorDashboardProps> = () => {
       </div>
 
       {/* 3. TWO-COLUMN OPERATIONAL SPLIT */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '24px' }}>
+      <div className="dashboard-split-grid" style={{ display: 'grid' }}>
         {/* Left Column: Today's Appointments Table */}
         <div className="card">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>

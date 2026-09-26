@@ -33,48 +33,22 @@ export const HomePage: React.FC<HomePageProps> = () => {
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#ffffff' }}>
       {/* 1. TOP ENTERPRISE NAVIGATION (VEEVA VAULT STYLE) */}
-      <nav style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 50,
-        background: 'linear-gradient(90deg, #F0FBFA 0%, #FFFFFF 50%, #F0FBFA 100%)',
-        backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid #CDE9E5',
-        boxShadow: '0 2px 12px rgba(15, 118, 110, 0.06)',
-        padding: '0 32px'
-      }}>
-        <div style={{
-          maxWidth: '1360px',
-          margin: '0 auto',
-          height: '70px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
+      <nav className="home-nav">
+        <div className="home-nav-inner">
           {/* Brand Identity */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '10px',
-              background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#ffffff',
-              boxShadow: '0 3px 8px rgba(15, 118, 110, 0.25)'
-            }}>
+          <div className="home-nav-brand">
+            <div className="home-nav-logo">
               <Shield size={22} strokeWidth={2.2} />
             </div>
-            <div>
-              <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div className="home-nav-title-group">
+              <div className="home-nav-title">
                 AIIA Clinical Operations
-                <span className="badge badge-cobalt" style={{ fontSize: '0.625rem', padding: '2px 7px' }}>
+                <span className="badge badge-cobalt hide-mobile" style={{ fontSize: '0.625rem', padding: '2px 7px' }}>
                   National Platform
                 </span>
               </div>
-              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                All India Institute of Ayurveda · Ministry of Ayush, Govt. of India
+              <div className="home-nav-subtitle">
+                <span className="hide-mobile">All India Institute of Ayurveda · </span>Ministry of Ayush, Govt. of India
               </div>
             </div>
           </div>
@@ -88,27 +62,21 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </div>
 
           {/* Portal Access Buttons */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <button
               onClick={() => navigate('/login')}
-              className="btn btn-primary"
-              style={{
-                background: 'var(--primary-teal)',
-                padding: '9px 18px',
-                fontSize: '0.84375rem',
-                boxShadow: '0 2px 8px rgba(15, 118, 110, 0.2)'
-              }}
+              className="btn btn-primary home-portal-btn"
             >
-              <span>Staff & Researcher Portal</span>
-              <ArrowRight size={15} />
+              <span className="hide-mobile">Staff & Researcher Portal</span>
+              <span className="show-mobile">Staff Portal</span>
+              <ArrowRight size={14} />
             </button>
           </div>
         </div>
       </nav>
 
       {/* 2. HERO SECTION: ULTRA-PROFESSIONAL VEEVA/MEDIDATA CORPORATE STYLE */}
-      <section className="teal-wavy-hero-bg bg-decorative-shapes" style={{
-        padding: '64px 32px 56px',
+      <section className="teal-wavy-hero-bg bg-decorative-shapes home-section" style={{
         borderBottom: '1px solid var(--border-subtle)',
         position: 'relative',
         overflow: 'hidden'
@@ -129,48 +97,35 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </svg>
         </div>
 
-        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1, width: '100%', boxSizing: 'border-box' }}>
           <div className="home-hero-grid" style={{
             display: 'grid',
             alignItems: 'center'
           }}>
             {/* Left: Authoritative, Approachable Value Proposition */}
-            <div>
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '20px' }}>
-                <span className="badge badge-cobalt" style={{ padding: '5px 12px', fontSize: '0.75rem' }}>
+            <div style={{ width: '100%', minWidth: 0 }}>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '20px', flexWrap: 'wrap' }}>
+                <span className="badge badge-cobalt" style={{ padding: '4px 10px', fontSize: '0.72rem' }}>
                   <Sparkles size={13} style={{ marginRight: '4px' }} />
                   UNIFIED LIFE SCIENCES SUITE
                 </span>
-                <span className="badge badge-emerald" style={{ padding: '5px 12px', fontSize: '0.75rem' }}>
+                <span className="badge badge-emerald" style={{ padding: '4px 10px', fontSize: '0.72rem' }}>
                   GCP & CTRI REGISTERED
                 </span>
               </div>
 
-              <h1 style={{
-                fontSize: '3.1rem',
-                fontWeight: 800,
-                color: 'var(--text-primary)',
-                letterSpacing: '-0.035em',
-                lineHeight: 1.15,
-                marginBottom: '20px'
-              }}>
-                The Unified Clinical Operations Platform for <br />
+              <h1 className="hero-title">
+                The Unified Clinical Operations Platform for <br className="hide-mobile" />
                 <span style={{ color: 'var(--clinical-cobalt)' }}>Evidence-Based Ayurveda</span>
               </h1>
 
-              <p style={{
-                fontSize: '1.1rem',
-                color: 'var(--text-secondary)',
-                lineHeight: 1.65,
-                marginBottom: '32px',
-                maxWidth: '680px'
-              }}>
+              <p className="hero-subtitle">
                 A modern clinical trial platform connecting India’s premier teaching hospitals. 
                 Streamline multicentric patient checkups, enforce 24-hour statutory safety alerts, 
                 and advance traditional medicine with the highest standards of global scientific validation.
               </p>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '40px' }}>
+              <div className="hero-btn-group">
                 <button
                   onClick={() => navigate('/login')}
                   className="btn btn-primary btn-lg"
@@ -193,32 +148,31 @@ export const HomePage: React.FC<HomePageProps> = () => {
 
               {/* Four Trust Stats */}
               <div className="home-stats-grid" style={{
-                display: 'grid',
                 borderTop: '1px solid var(--border-subtle)',
-                paddingTop: '28px'
+                paddingTop: '24px'
               }}>
-                <div>
-                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--text-primary)' }}>8 Centers</div>
-                  <div style={{ fontSize: '0.78125rem', color: 'var(--text-muted)' }}>Premier Teaching Hospitals</div>
+                <div className="stat-card">
+                  <div className="stat-number" style={{ color: 'var(--text-primary)' }}>8 Centers</div>
+                  <div className="stat-label">Premier Teaching Hospitals</div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--clinical-cobalt)' }}>500 Cohort</div>
-                  <div style={{ fontSize: '0.78125rem', color: 'var(--text-muted)' }}>Active Phase III Participants</div>
+                <div className="stat-card">
+                  <div className="stat-number" style={{ color: 'var(--clinical-cobalt)' }}>500 Cohort</div>
+                  <div className="stat-label">Active Phase III Participants</div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--danger-rose)' }}>24-Hour Watch</div>
-                  <div style={{ fontSize: '0.78125rem', color: 'var(--text-muted)' }}>Urgent Safety Alerts</div>
+                <div className="stat-card">
+                  <div className="stat-number" style={{ color: 'var(--danger-rose)' }}>24-Hour Watch</div>
+                  <div className="stat-label">Urgent Safety Alerts</div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '1.65rem', fontWeight: 800, color: 'var(--ayush-emerald)' }}>100% Sealed</div>
-                  <div style={{ fontSize: '0.78125rem', color: 'var(--text-muted)' }}>Permanent Medical Trail</div>
+                <div className="stat-card">
+                  <div className="stat-number" style={{ color: 'var(--ayush-emerald)' }}>100% Sealed</div>
+                  <div className="stat-label">Permanent Medical Trail</div>
                 </div>
               </div>
             </div>
 
             {/* Right: High-Resolution Clinical Laboratory Visual with Floating Metadata Widget */}
-            <div style={{ position: 'relative' }}>
-              <div className="image-card-container" style={{ maxHeight: '470px', height: '470px' }}>
+            <div style={{ position: 'relative', width: '100%' }}>
+              <div className="image-card-container">
                 <img
                   src="/images/hero_clinical_ayurveda.jpg"
                   alt="Modern pharmacology research laboratory with clinical researcher examining botanical formulations and digital analytics"
@@ -226,19 +180,8 @@ export const HomePage: React.FC<HomePageProps> = () => {
               </div>
 
               {/* Floating Live Trial Metadata Pill */}
-              <div style={{
-                position: 'absolute',
-                bottom: '-22px',
-                left: '20px',
-                right: '20px',
-                background: 'rgba(255, 255, 255, 0.96)',
-                backdropFilter: 'blur(10px)',
-                border: '1px solid var(--border-subtle)',
-                borderRadius: 'var(--radius-lg)',
-                padding: '16px 20px',
-                boxShadow: 'var(--shadow-lg)'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
+              <div className="hero-floating-pill">
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px', flexWrap: 'wrap', gap: '6px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <span className="badge badge-emerald" style={{ fontSize: '0.625rem', padding: '2px 6px' }}>
                       LIVE STUDY
@@ -261,18 +204,18 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 3. CORE CLINICAL SUITE (MODELED AFTER VEEVA VAULT MODULAR ARCHITECTURE) */}
-      <section id="solutions" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', position: 'relative', overflow: 'hidden' }}>
+      <section id="solutions" className="teal-wavy-hero-bg bg-decorative-shapes home-section" style={{ position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
           <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '140px', opacity: 0.16 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
             <path fill="#0F766E" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,122.7C960,138,1056,149,1152,138.7C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z" />
           </svg>
         </div>
         <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <span className="badge badge-cobalt" style={{ marginBottom: '10px' }}>
               UNIFIED CLINICAL CARE
             </span>
-            <h2 style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em' }}>
+            <h2 className="section-title">
               Engineered for Complete Clinical Governance
             </h2>
             <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', maxWidth: '680px', margin: '10px auto 0', lineHeight: 1.6 }}>
@@ -389,7 +332,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 4. PATIENT CARE & ETHICAL SAFETY IN ACTION */}
-      <section id="patient-care" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', position: 'relative', overflow: 'hidden' }}>
+      <section id="patient-care" className="teal-wavy-hero-bg bg-decorative-shapes home-section" style={{ position: 'relative', overflow: 'hidden' }}>
         {/* Organic Flowing Teal Waves Graphic Layer */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
           <svg style={{ position: 'absolute', top: 0, right: 0, width: '65%', height: '100%', opacity: 0.16 }} viewBox="0 0 900 600" preserveAspectRatio="none">
@@ -433,14 +376,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
               <span className="badge badge-emerald" style={{ marginBottom: '12px' }}>
                 PATIENT-FIRST PHILOSOPHY
               </span>
-              <h2 style={{
-                fontSize: '2.25rem',
-                fontWeight: 800,
-                color: 'var(--text-primary)',
-                letterSpacing: '-0.025em',
-                lineHeight: 1.25,
-                marginBottom: '16px'
-              }}>
+              <h2 className="section-title" style={{ marginBottom: '16px' }}>
                 Compassionate Care Backed by Rigorous Protection
               </h2>
               <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', lineHeight: 1.7, marginBottom: '24px' }}>
@@ -551,7 +487,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 5. ACTIVE CLINICAL TRIAL SPOTLIGHT */}
-      <section id="active-trials" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
+      <section id="active-trials" className="teal-wavy-hero-bg bg-decorative-shapes home-section" style={{ borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
         {/* Organic Flowing Teal Waves Graphic Layer */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
           <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '180px', opacity: 0.16 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -572,7 +508,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             <span className="badge badge-cobalt" style={{ marginBottom: '10px' }}>
               LANDMARK MULTISITE TRIAL
             </span>
-            <h2 style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em' }}>
+            <h2 className="section-title">
               Active Clinical Study in Progress
             </h2>
             <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', maxWidth: '640px', margin: '8px auto 0' }}>
@@ -676,7 +612,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 6. CLINICAL HOSPITAL NETWORK */}
-      <section id="hospital-network" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
+      <section id="hospital-network" className="teal-wavy-hero-bg bg-decorative-shapes home-section" style={{ borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
         {/* Organic Flowing Teal Waves Graphic Layer */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
           <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '200px', opacity: 0.16 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
@@ -697,7 +633,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
             <span className="badge badge-emerald" style={{ marginBottom: '10px' }}>
               NATIONWIDE APEX NETWORK
             </span>
-            <h2 style={{ fontSize: '2.25rem', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.025em' }}>
+            <h2 className="section-title">
               Participating Hospital Centers
             </h2>
             <p style={{ fontSize: '1rem', color: 'var(--text-secondary)', maxWidth: '640px', margin: '8px auto 0' }}>
@@ -787,12 +723,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 7. INSTITUTIONAL FOOTER */}
-      <footer style={{
-        background: 'var(--vault-navy)',
-        color: '#f8fafc',
-        padding: '60px 32px 32px',
-        borderTop: '1px solid #1e293b'
-      }}>
+      <footer className="home-footer">
         <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
           <div className="home-pillars-grid" style={{
             display: 'grid',
@@ -866,19 +797,11 @@ export const HomePage: React.FC<HomePageProps> = () => {
             </div>
           </div>
 
-          <div style={{
-            borderTop: '1px solid #162a45',
-            paddingTop: '24px',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            fontSize: '0.75rem',
-            color: '#64748b'
-          }}>
+          <div className="home-footer-bottom">
             <div>
               © 2026 All India Institute of Ayurveda (AIIA). Ministry of Ayush, Government of India. All rights reserved.
             </div>
-            <div style={{ display: 'flex', gap: '20px' }}>
+            <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
               <span>Privacy Policy</span>
               <span>Terms of Clinical Protocol</span>
               <span>GCP Certification</span>

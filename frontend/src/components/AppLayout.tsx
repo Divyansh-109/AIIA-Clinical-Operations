@@ -141,15 +141,7 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
 
       {/* 1. TOP HEADER NAVIGATION (ENTERPRISE VEEVA VAULT STANDARD) */}
       <header className="top-nav-bar" ref={navRef} style={{ position: 'relative', zIndex: 10 }}>
-        <div style={{
-          maxWidth: '1440px',
-          margin: '0 auto',
-          padding: '0 24px',
-          height: '66px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between'
-        }}>
+        <div className="top-nav-inner">
           {/* Left: Brand Identity & Active Study Pill */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             <div
@@ -639,18 +631,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
         )}
 
         {/* 2. SUB-BAR: ACTIVE TRIAL CONTEXT & BREADCRUMB */}
-        <div style={{
-          background: 'linear-gradient(90deg, #FFFFFF 0%, #F0FBFA 100%)',
-          borderTop: '1px solid #CDE9E5',
-          padding: '8px 24px',
-          fontSize: '0.78125rem',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '8px'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+        <div className="app-sub-bar">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', minWidth: 0 }}>
             <span style={{ color: 'var(--text-muted)' }}>Active Trial:</span>
             <span className="badge badge-emerald" style={{ padding: '2px 8px', fontSize: '0.65rem' }}>
               Phase III
@@ -659,23 +641,16 @@ export const AppLayout: React.FC<AppLayoutProps> = ({
             <span className="desktop-nav-only" style={{ color: 'var(--text-muted)' }}>· Ayush-PCOS Kwatha & Vati vs Standard Care (320 / 500 Participants)</span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)', flexWrap: 'wrap', minWidth: 0 }}>
             <span>Portal</span>
             <ChevronRight size={12} />
-            <strong style={{ color: 'var(--primary-teal)' }}>{getPageTitle()}</strong>
+            <strong style={{ color: 'var(--primary-teal)', wordBreak: 'break-word' }}>{getPageTitle()}</strong>
           </div>
         </div>
       </header>
 
       {/* 3. MAIN CONTENT CONTAINER (MINIMAL, UNCLUTTERED & SPACIOUS) */}
-      <main style={{
-        flex: 1,
-        maxWidth: '1440px',
-        width: '100%',
-        margin: '0 auto',
-        padding: '28px 24px',
-        overflowY: 'auto'
-      }}>
+      <main className="app-main-content">
         {children}
       </main>
     </div>

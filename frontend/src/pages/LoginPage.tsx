@@ -153,47 +153,44 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
       </div>
 
       {/* Enterprise Top Header */}
-      <header className="top-nav-bar" style={{
-        position: 'relative',
-        zIndex: 10,
-        padding: '0 32px',
-        height: '68px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
-        <div
-          onClick={() => navigate('/')}
-          style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
-        >
-          <div style={{
-            width: '38px',
-            height: '38px',
-            borderRadius: '10px',
-            background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#ffffff'
-          }}>
-            <Shield size={20} strokeWidth={2.2} />
-          </div>
-          <div>
-            <div style={{ fontSize: '0.9375rem', fontWeight: 800, color: 'var(--text-primary)' }}>
-              All India Institute of Ayurveda
+      <header className="login-nav-bar">
+        <div className="login-nav-inner">
+          <div
+            onClick={() => navigate('/')}
+            style={{ display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', minWidth: 0 }}
+          >
+            <div style={{
+              width: '36px',
+              height: '36px',
+              borderRadius: '8px',
+              background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#ffffff',
+              flexShrink: 0
+            }}>
+              <Shield size={20} strokeWidth={2.2} />
             </div>
-            <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-              Clinical Research Operations & Governance Platform
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: '0.92rem', fontWeight: 800, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>
+                All India Institute of Ayurveda
+              </div>
+              <div className="hide-mobile" style={{ fontSize: '0.72rem', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+                Clinical Research Operations & Governance Platform
+              </div>
             </div>
           </div>
-        </div>
 
-        <button
-          onClick={() => navigate('/')}
-          className="btn btn-secondary btn-sm"
-        >
-          ← Return to Public Website
-        </button>
+          <button
+            onClick={() => navigate('/')}
+            className="btn btn-secondary btn-sm"
+            style={{ whiteSpace: 'nowrap', flexShrink: 0 }}
+          >
+            <span className="hide-mobile">← Return to Public Website</span>
+            <span className="show-mobile">← Public Site</span>
+          </button>
+        </div>
       </header>
 
       {/* Main Container */}

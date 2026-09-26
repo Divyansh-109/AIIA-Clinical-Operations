@@ -1,45 +1,52 @@
 :root {
-  /* Enterprise Life Sciences & Clinical Trial Palette (Inspired by Veeva Vault & Medidata) */
-  --bg-primary: #f8fafc;       /* Slate-50: Crisp institutional canvas */
-  --bg-secondary: #ffffff;     /* Pure White: Header, modals */
-  --bg-card: #ffffff;          /* Pure White: Cards */
-  --bg-card-hover: #f1f5f9;    /* Soft hover */
-  --bg-subtle: #f1f5f9;        /* Slate-100 */
+  /* ==================================================
+     TEAL HEALTHCARE DESIGN SYSTEM TOKENS
+     ================================================== */
+  --primary-teal: #0F766E;        /* Primary Teal: Buttons, active nav, primary headers, key icons */
+  --primary-teal-hover: #115E59;  /* Primary Hover state */
+  --secondary-teal: #14B8A6;      /* Secondary Teal: Badges, progress fill, chips, supporting icons */
+  --light-teal: #E6F7F4;          /* Light Teal: Icon backgrounds, highlight containers, hover states */
+  --very-light-teal: #F0FBFA;     /* Very Light Teal: Section backgrounds, soft highlights */
+  --soft-teal: #DDF3EF;           /* Soft Teal: Dividers, subtle fills, tracks */
+
+  --text-primary: #0F172A;        /* Dark Text: Main headings, primary labels */
+  --text-secondary: #334155;      /* Dark Slate Text: Nav links & body descriptions */
+  --text-muted: #64748B;          /* Supporting slate text */
+  --text-light: #94a3b8;          /* Light slate text */
+
+  --border-subtle: #D7E9E7;       /* Card borders, dividers, subtle separators */
+  --border-medium: #BFE8E2;       /* Input borders, active element borders */
+  --border-nav: #CDE9E5;          /* Distinct Navigation border */
+
+  --bg-primary: #ffffff;          /* Pure White: Dominant background canvas (70-80% usage) */
+  --bg-secondary: #F0FBFA;        /* Very Light Teal background */
+  --bg-card: #ffffff;             /* Pure White Crisp Cards */
+  --bg-card-hover: #F0FBFA;       /* Very Light Teal hover */
+  --bg-subtle: #F0FBFA;           /* Very Light Teal subtle section background */
   --bg-elevated: #ffffff;
 
-  /* Enterprise Hairline Borders */
-  --border-subtle: #e2e8f0;    /* Slate-200 */
-  --border-medium: #cbd5e1;    /* Slate-300 */
-  --border-active: #0284c7;    /* Active Clinical Sky/Blue */
+  /* Mappings for component compatibility */
+  --vault-navy: #0F766E;
+  --vault-navy-light: #115E59;
+  --clinical-cobalt: #0F766E;
+  --clinical-cobalt-dark: #115E59;
+  --clinical-cobalt-light: #E6F7F4;
+  --veeva-orange: #14B8A6;
+  --veeva-orange-light: #E6F7F4;
 
-  /* High-Contrast Obsidian & Slate Typography */
-  --text-primary: #0a192f;     /* Deep Vault Obsidian: Maximum authority & crisp contrast */
-  --text-secondary: #334155;   /* Slate-700: Readable body & descriptions */
-  --text-muted: #64748b;       /* Slate-500: Subtitles, helper text */
-  --text-light: #94a3b8;       /* Slate-400: Placeholders */
+  --ayush-teal: #0F766E;
+  --ayush-teal-dark: #115E59;
+  --ayush-teal-light: #E6F7F4;
+  --ayush-emerald: #14B8A6;
+  --ayush-emerald-light: #E6F7F4;
 
-  /* Enterprise Brand & Clinical Accents */
-  --vault-navy: #0b1a2d;       /* Deep Veeva-style Midnight Navy */
-  --vault-navy-light: #162a45;
-  --clinical-cobalt: #0066cc;  /* Enterprise Life Sciences Blue */
-  --clinical-cobalt-dark: #004c99;
-  --clinical-cobalt-light: #eff6ff;
-  --veeva-orange: #ea580c;     /* High-impact highlight accent */
-  --veeva-orange-light: #fff7ed;
-  
-  /* Traditional Medicine & Ayush Heritage Accents */
-  --ayush-teal: #0f766e;       /* Deep Botanical Teal */
-  --ayush-teal-light: #f0fdfa;
-  --ayush-emerald: #059669;    /* Clean Medical Emerald */
-  --ayush-emerald-light: #ecfdf5;
-  
-  /* Regulatory & Safety Alerts */
-  --safety-amber: #d97706;     /* Amber-600 */
+  /* Semantic Alerts (Preserved for critical safety) */
+  --safety-amber: #d97706;
   --safety-amber-light: #fffbeb;
-  --danger-rose: #dc2626;      /* Red-600 */
+  --danger-rose: #dc2626;
   --danger-rose-light: #fef2f2;
-  --purple-accent: #6366f1;    /* Indigo-500 */
-  --purple-light: #eef2ff;
+  --purple-accent: #0F766E;
+  --purple-light: #E6F7F4;
 
   --font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
@@ -50,12 +57,12 @@
   --radius-lg: 14px;
   --radius-xl: 18px;
 
-  /* Enterprise Subtle Multi-Layer Shadows */
-  --shadow-xs: 0 1px 2px 0 rgba(11, 26, 45, 0.04);
-  --shadow-sm: 0 2px 4px 0 rgba(11, 26, 45, 0.05), 0 1px 2px -1px rgba(11, 26, 45, 0.03);
-  --shadow-md: 0 4px 12px -2px rgba(11, 26, 45, 0.06), 0 2px 6px -1px rgba(11, 26, 45, 0.03);
-  --shadow-lg: 0 12px 24px -4px rgba(11, 26, 45, 0.08), 0 4px 8px -2px rgba(11, 26, 45, 0.03);
-  --shadow-xl: 0 20px 35px -6px rgba(11, 26, 45, 0.12);
+  /* Subtle Teal Shadows */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 118, 110, 0.04);
+  --shadow-sm: 0 2px 4px 0 rgba(15, 118, 110, 0.05), 0 1px 2px -1px rgba(15, 118, 110, 0.03);
+  --shadow-md: 0 4px 12px -2px rgba(15, 118, 110, 0.06), 0 2px 6px -1px rgba(15, 118, 110, 0.03);
+  --shadow-lg: 0 12px 24px -4px rgba(15, 118, 110, 0.08), 0 4px 8px -2px rgba(15, 118, 110, 0.03);
+  --shadow-nav: 0 2px 12px 0 rgba(15, 118, 110, 0.06);
 }
 
 * {
@@ -67,11 +74,82 @@
 body {
   font-family: var(--font-family);
   background-color: var(--bg-primary);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FDFC 45%, #F0FBFA 100%);
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* Background Decorative Organic Wave & Fluid Shape System (High Visibility) */
+.bg-decorative-shapes {
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-decorative-shapes::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -100px;
+  width: 750px;
+  height: 600px;
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  background: radial-gradient(ellipse at center, rgba(20, 184, 166, 0.25) 0%, rgba(15, 118, 110, 0.12) 60%, transparent 80%);
+  filter: blur(25px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrganicWave 22s ease-in-out infinite alternate;
+}
+
+.bg-decorative-shapes::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -80px;
+  width: 800px;
+  height: 620px;
+  border-radius: 63% 37% 34% 66% / 54% 58% 42% 46%;
+  background: radial-gradient(ellipse at center, rgba(15, 118, 110, 0.20) 0%, rgba(230, 247, 244, 0.10) 65%, transparent 80%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatOrganicWaveReverse 28s ease-in-out infinite alternate;
+}
+
+@keyframes floatOrganicWave {
+  0% {
+    transform: rotate(-10deg) translate(0, 0) scale(1);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+  100% {
+    transform: rotate(5deg) translate(25px, 35px) scale(1.06);
+    border-radius: 58% 42% 40% 60% / 60% 38% 62% 40%;
+  }
+}
+
+@keyframes floatOrganicWaveReverse {
+  0% {
+    transform: rotate(10deg) translate(0, 0) scale(1);
+    border-radius: 63% 37% 34% 66% / 54% 58% 42% 46%;
+  }
+  100% {
+    transform: rotate(-8deg) translate(-30px, -25px) scale(1.05);
+    border-radius: 46% 54% 60% 40% / 40% 64% 36% 60%;
+  }
+}
+
+/* Organic Wavy Background Layer with High-Visibility SVG Wave Vector Lines */
+.teal-wavy-hero-bg {
+  position: relative;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F4FBF9 40%, #E6F7F4 100%);
+  background-image: 
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%2314b8a6' fill-opacity='0.16' d='M0,160L60,176C120,192,240,224,360,218.7C480,213,600,171,720,165.3C840,160,960,192,1080,197.3C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z'%3E%3C/path%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%230f766e' fill-opacity='0.12' d='M0,96L80,112C160,128,320,160,480,165.3C640,171,800,149,960,138.7C1120,128,1280,128,1360,128L1440,128L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom center, top center;
+  background-size: 100% auto, 100% auto;
 }
 
 /* Custom Scrollbar */
@@ -98,12 +176,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-  color: var(--ayush-teal);
+  color: var(--primary-teal);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 a:hover {
-  color: var(--ayush-teal-dark);
+  color: var(--primary-teal-hover);
 }
 
 /* Buttons */
@@ -130,54 +208,36 @@ button {
 }
 
 .btn-primary {
-  background: var(--vault-navy);
+  background: var(--primary-teal);
   color: #ffffff;
 }
 .btn-primary:hover {
-  background: var(--vault-navy-light);
-  box-shadow: 0 4px 14px rgba(11, 26, 45, 0.25);
-  transform: translateY(-1px);
-}
-
-.btn-cobalt {
-  background: var(--clinical-cobalt);
-  color: #ffffff;
-}
-.btn-cobalt:hover {
-  background: var(--clinical-cobalt-dark);
-  box-shadow: 0 4px 14px rgba(0, 102, 204, 0.28);
-  transform: translateY(-1px);
-}
-
-.btn-orange {
-  background: var(--veeva-orange);
-  color: #ffffff;
-}
-.btn-orange:hover {
-  background: #c2410c;
-  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.28);
+  background: var(--primary-teal-hover);
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.25);
   transform: translateY(-1px);
 }
 
 .btn-secondary {
   background: #ffffff;
-  color: var(--text-primary);
-  border: 1px solid var(--border-medium);
+  color: var(--primary-teal);
+  border: 1px solid var(--primary-teal);
   box-shadow: var(--shadow-xs);
 }
 .btn-secondary:hover {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  border-color: #94a3b8;
+  background: var(--light-teal);
+  color: var(--primary-teal);
+  border-color: var(--primary-teal);
   transform: translateY(-1px);
 }
 
-.btn-blue {
-  background: var(--clinical-cobalt);
+.btn-cobalt, .btn-blue, .btn-orange {
+  background: var(--primary-teal);
   color: #ffffff;
 }
-.btn-blue:hover {
-  background: var(--clinical-cobalt-dark);
+.btn-cobalt:hover, .btn-blue:hover, .btn-orange:hover {
+  background: var(--primary-teal-hover);
+  box-shadow: 0 4px 14px rgba(15, 118, 110, 0.28);
+  transform: translateY(-1px);
 }
 
 .btn-sm {
@@ -192,14 +252,16 @@ button {
   border-radius: var(--radius-md);
 }
 
-/* Clean Uncluttered Enterprise Cards */
+/* Crisp White Cards Standing out against Tinted Background */
 .card {
-  background: var(--bg-card);
+  background: #ffffff;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 24px;
   box-shadow: var(--shadow-xs);
   transition: all 0.2s ease;
+  position: relative;
+  z-index: 1;
 }
 .card:hover {
   border-color: var(--border-medium);
@@ -225,22 +287,16 @@ button {
   white-space: nowrap;
 }
 
-.badge-emerald {
-  background: var(--ayush-emerald-light);
-  color: #047857;
-  border: 1px solid #a7f3d0;
-}
-
-.badge-blue, .badge-cobalt {
-  background: var(--clinical-cobalt-light);
-  color: #0066cc;
-  border: 1px solid #bfdbfe;
+.badge-emerald, .badge-blue, .badge-cobalt, .badge-purple {
+  background: var(--light-teal);
+  color: var(--primary-teal);
+  border: 1px solid var(--border-medium);
 }
 
 .badge-orange {
-  background: var(--veeva-orange-light);
-  color: #c2410c;
-  border: 1px solid #fed7aa;
+  background: var(--light-teal);
+  color: var(--secondary-teal);
+  border: 1px solid var(--border-medium);
 }
 
 .badge-amber {
@@ -255,14 +311,8 @@ button {
   border: 1px solid #fecaca;
 }
 
-.badge-purple {
-  background: var(--purple-light);
-  color: #6d28d9;
-  border: 1px solid #ddd6fe;
-}
-
 .badge-neutral {
-  background: var(--bg-elevated);
+  background: var(--very-light-teal);
   color: var(--text-secondary);
   border: 1px solid var(--border-subtle);
 }
@@ -313,9 +363,9 @@ button {
 }
 
 .table th {
-  background: #f8fafc;
+  background: var(--very-light-teal);
   padding: 12px 16px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   font-weight: 600;
   font-size: 0.75rem;
   text-transform: uppercase;
@@ -335,7 +385,7 @@ button {
 }
 
 .table tbody tr:hover td {
-  background-color: #f8fafc;
+  background-color: var(--very-light-teal);
 }
 
 /* Clean Form Controls */
@@ -353,8 +403,8 @@ button {
 
 .input-text:focus, .input-select:focus, textarea.input-text:focus {
   outline: none;
-  border-color: var(--ayush-teal);
-  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+  border-color: var(--primary-teal);
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.20);
 }
 
 /* Section Header Typography */
@@ -372,14 +422,14 @@ button {
   color: var(--text-muted);
 }
 
-/* Modern Top Navigation Bar Dropdown System */
+/* Distinct Top Navigation Bar System */
 .top-nav-bar {
-  background: #ffffff;
-  border-bottom: 1px solid var(--border-subtle);
+  background: linear-gradient(90deg, #F0FBFA 0%, #FFFFFF 50%, #F0FBFA 100%);
+  border-bottom: 1px solid var(--border-nav);
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: 0 1px 3px 0 rgba(11, 26, 45, 0.04);
+  box-shadow: var(--shadow-nav);
 }
 
 .nav-dropdown-wrapper {
@@ -395,19 +445,19 @@ button {
   border-radius: var(--radius-sm);
   font-size: 0.84375rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #334155;
   background: transparent;
   transition: all 0.15s ease;
 }
 
 .nav-btn:hover {
-  color: var(--vault-navy);
-  background: var(--bg-subtle);
+  color: var(--primary-teal);
+  background: var(--light-teal);
 }
 
 .nav-btn.active {
-  color: var(--clinical-cobalt);
-  background: var(--clinical-cobalt-light);
+  color: var(--primary-teal);
+  background: var(--light-teal);
   font-weight: 700;
 }
 
@@ -442,7 +492,7 @@ button {
   gap: 12px;
   padding: 9px 12px;
   border-radius: var(--radius-sm);
-  color: var(--text-secondary);
+  color: #334155;
   font-size: 0.84375rem;
   transition: all 0.15s ease;
   cursor: pointer;
@@ -453,13 +503,13 @@ button {
 }
 
 .nav-dropdown-item:hover {
-  background: var(--bg-primary);
-  color: var(--clinical-cobalt);
+  background: var(--light-teal);
+  color: var(--primary-teal);
 }
 
 .nav-dropdown-item.active {
-  background: var(--clinical-cobalt-light);
-  color: var(--clinical-cobalt);
+  background: var(--light-teal);
+  color: var(--primary-teal);
   font-weight: 600;
 }
 
@@ -470,8 +520,8 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--clinical-cobalt-light);
-  color: var(--clinical-cobalt);
+  background: var(--light-teal);
+  color: var(--primary-teal);
   flex-shrink: 0;
 }
 
@@ -495,4 +545,16 @@ button {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+/* Progress Bars & Status Indicators */
+.progress-bar-track {
+  background-color: #DDF3EF;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  background-color: var(--secondary-teal);
+  height: 100%;
+  transition: width 0.3s ease;
 }

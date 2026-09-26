@@ -37,9 +37,10 @@ export const HomePage: React.FC<HomePageProps> = () => {
         position: 'sticky',
         top: 0,
         zIndex: 50,
-        background: 'rgba(255, 255, 255, 0.96)',
+        background: 'linear-gradient(90deg, #F0FBFA 0%, #FFFFFF 50%, #F0FBFA 100%)',
         backdropFilter: 'blur(12px)',
-        borderBottom: '1px solid var(--border-subtle)',
+        borderBottom: '1px solid #CDE9E5',
+        boxShadow: '0 2px 12px rgba(15, 118, 110, 0.06)',
         padding: '0 32px'
       }}>
         <div style={{
@@ -56,12 +57,12 @@ export const HomePage: React.FC<HomePageProps> = () => {
               width: '40px',
               height: '40px',
               borderRadius: '10px',
-              background: 'linear-gradient(135deg, #0b1a2d 0%, #0066cc 100%)',
+              background: 'linear-gradient(135deg, #0F766E 0%, #14B8A6 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               color: '#ffffff',
-              boxShadow: '0 3px 8px rgba(0, 102, 204, 0.25)'
+              boxShadow: '0 3px 8px rgba(15, 118, 110, 0.25)'
             }}>
               <Shield size={22} strokeWidth={2.2} />
             </div>
@@ -92,10 +93,10 @@ export const HomePage: React.FC<HomePageProps> = () => {
               onClick={() => navigate('/login')}
               className="btn btn-primary"
               style={{
-                background: 'var(--vault-navy)',
+                background: 'var(--primary-teal)',
                 padding: '9px 18px',
                 fontSize: '0.84375rem',
-                boxShadow: '0 2px 8px rgba(11, 26, 45, 0.2)'
+                boxShadow: '0 2px 8px rgba(15, 118, 110, 0.2)'
               }}
             >
               <span>Staff & Researcher Portal</span>
@@ -106,12 +107,29 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </nav>
 
       {/* 2. HERO SECTION: ULTRA-PROFESSIONAL VEEVA/MEDIDATA CORPORATE STYLE */}
-      <section style={{
-        background: 'linear-gradient(180deg, #f8fafc 0%, #ffffff 100%)',
+      <section className="teal-wavy-hero-bg bg-decorative-shapes" style={{
         padding: '64px 32px 56px',
-        borderBottom: '1px solid var(--border-subtle)'
+        borderBottom: '1px solid var(--border-subtle)',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+        {/* Organic Flowing Teal Waves Graphic Layer */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          <svg style={{ position: 'absolute', top: 0, right: 0, width: '65%', height: '100%', opacity: 0.18 }} viewBox="0 0 900 600" preserveAspectRatio="none">
+            <path fill="url(#hero-teal-wave-grad)" d="M150 0 C400 180 350 380 900 600 L900 0 Z" />
+            <defs>
+              <linearGradient id="hero-teal-wave-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.7" />
+                <stop offset="100%" stopColor="#0F766E" stopOpacity="0.3" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '160px', opacity: 0.15 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0F766E" d="M0,128L80,144C160,160,320,192,480,186.7C640,181,800,139,960,128C1120,117,1280,139,1360,149.3L1440,160L1440,320L0,320Z" />
+          </svg>
+        </div>
+
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: '1.15fr 0.85fr',
@@ -238,7 +256,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
                   </span>
                 </div>
                 <div style={{ width: '100%', height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
-                  <div style={{ width: '64%', height: '100%', background: 'linear-gradient(90deg, #0066cc, #0284c7)' }}></div>
+                  <div style={{ width: '64%', height: '100%', background: 'linear-gradient(90deg, #0F766E, #14B8A6)' }}></div>
                 </div>
               </div>
             </div>
@@ -247,8 +265,13 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 3. CORE CLINICAL SUITE (MODELED AFTER VEEVA VAULT MODULAR ARCHITECTURE) */}
-      <section id="solutions" style={{ padding: '80px 32px', background: '#f8fafc' }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+      <section id="solutions" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '140px', opacity: 0.16 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0F766E" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,122.7C960,138,1056,149,1152,138.7C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z" />
+          </svg>
+        </div>
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '56px' }}>
             <span className="badge badge-cobalt" style={{ marginBottom: '10px' }}>
               UNIFIED CLINICAL CARE
@@ -370,8 +393,23 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 4. PATIENT CARE & ETHICAL SAFETY IN ACTION */}
-      <section id="patient-care" style={{ padding: '80px 32px', background: '#ffffff' }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+      <section id="patient-care" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', position: 'relative', overflow: 'hidden' }}>
+        {/* Organic Flowing Teal Waves Graphic Layer */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          <svg style={{ position: 'absolute', top: 0, right: 0, width: '65%', height: '100%', opacity: 0.16 }} viewBox="0 0 900 600" preserveAspectRatio="none">
+            <path fill="url(#patient-teal-wave-grad)" d="M0 100 C300 0 600 300 900 150 L900 600 L0 600 Z" />
+            <defs>
+              <linearGradient id="patient-teal-wave-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#0F766E" stopOpacity="0.2" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '160px', opacity: 0.14 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0F766E" d="M0,128L80,144C160,160,320,192,480,186.7C640,181,800,139,960,128C1120,117,1280,139,1360,149.3L1440,160L1440,320L0,320Z" />
+          </svg>
+        </div>
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{
             display: 'grid',
             gridTemplateColumns: '0.95fr 1.05fr',
@@ -519,8 +557,23 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 5. ACTIVE CLINICAL TRIAL SPOTLIGHT */}
-      <section id="active-trials" style={{ padding: '80px 32px', background: '#f8fafc', borderTop: '1px solid var(--border-subtle)' }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+      <section id="active-trials" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
+        {/* Organic Flowing Teal Waves Graphic Layer */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          <svg style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '180px', opacity: 0.16 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0F766E" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,90.7C672,85,768,107,864,122.7C960,138,1056,149,1152,138.7C1248,128,1344,96,1392,80L1440,64L1440,0L0,0Z" />
+          </svg>
+          <svg style={{ position: 'absolute', bottom: 0, right: 0, width: '50%', height: '100%', opacity: 0.15 }} viewBox="0 0 600 600" preserveAspectRatio="none">
+            <path fill="url(#active-teal-wave-grad)" d="M100 0 C400 200 200 500 600 600 L600 0 Z" />
+            <defs>
+              <linearGradient id="active-teal-wave-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#0F766E" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#14B8A6" stopOpacity="0.1" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <span className="badge badge-cobalt" style={{ marginBottom: '10px' }}>
               LANDMARK MULTISITE TRIAL
@@ -629,8 +682,23 @@ export const HomePage: React.FC<HomePageProps> = () => {
       </section>
 
       {/* 6. CLINICAL HOSPITAL NETWORK */}
-      <section id="hospital-network" style={{ padding: '80px 32px', background: '#ffffff' }}>
-        <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+      <section id="hospital-network" className="teal-wavy-hero-bg bg-decorative-shapes" style={{ padding: '80px 32px', borderTop: '1px solid var(--border-subtle)', position: 'relative', overflow: 'hidden' }}>
+        {/* Organic Flowing Teal Waves Graphic Layer */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0 }}>
+          <svg style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: '200px', opacity: 0.16 }} viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#0F766E" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,138.7C672,128,768,160,864,181.3C960,203,1056,213,1152,197.3C1248,181,1344,139,1392,117.3L1440,96L1440,320L0,320Z" />
+          </svg>
+          <svg style={{ position: 'absolute', top: 0, right: 0, width: '60%', height: '80%', opacity: 0.14 }} viewBox="0 0 800 500" preserveAspectRatio="none">
+            <path fill="url(#hosp-teal-wave-grad)" d="M200 0 C500 150 400 350 800 500 L800 0 Z" />
+            <defs>
+              <linearGradient id="hosp-teal-wave-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#14B8A6" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#0F766E" stopOpacity="0.15" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div style={{ maxWidth: '1360px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div style={{ textAlign: 'center', marginBottom: '48px' }}>
             <span className="badge badge-emerald" style={{ marginBottom: '10px' }}>
               NATIONWIDE APEX NETWORK

@@ -24,6 +24,20 @@ async def lifespan(app: FastAPI):
     logger.info("Initializing AIIA CTMS Platform & verifying database schema...")
     Base.metadata.create_all(bind=engine)
     logger.info("Database schema initialized successfully.")
+    try:
+        from app.core.database import SessionLocal
+        from app.models.identity import User
+        db = SessionLocal()
+        if db.query(User).count() == 0:
+            logger.info("No users found in database. Running initial database seeding...")
+            from scripts.seed_roles_and_users import seed as seed_users
+            from scripts.seed_flagship_study import seed_flagship_study
+            seed_users()
+            seed_flagship_study()
+            logger.info("Initial database seeding completed.")
+        db.close()
+    except Exception as e:
+        logger.warning(f"Auto-seeding check notice: {e}")
     register_domain_subscribers()
     yield
     logger.info("AIIA CTMS Platform shutting down cleanly.")

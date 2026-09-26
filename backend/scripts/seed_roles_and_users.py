@@ -55,10 +55,14 @@ PERMISSIONS_DATA = [
 USERS_DATA = [
     {"email": "admin@aiia.gov.in", "name": "Prof. R. K. Singhal (Admin)", "role": "ADMIN"},
     {"email": "director@aiia.gov.in", "name": "Dr. Tanuja Nesari (Director & Leadership)", "role": "LEADERSHIP"},
+    {"email": "pi@aiia.gov.in", "name": "Prof. (Dr.) Tanuja Manoj Nesari (Principal Investigator)", "role": "PI"},
     {"email": "pi.sharma@aiia.gov.in", "name": "Dr. Anand Sharma (Principal Investigator)", "role": "PI"},
+    {"email": "coordinator@aiia.gov.in", "name": "Priya Nair (Lead Study Coordinator)", "role": "STUDY_COORDINATOR"},
     {"email": "coordinator.priya@aiia.gov.in", "name": "Priya Verma (Lead Study Coordinator)", "role": "STUDY_COORDINATOR"},
+    {"email": "cra@aiia.gov.in", "name": "Vikram Malhotra (Senior Clinical Monitor)", "role": "MONITOR"},
     {"email": "monitor.cra@cro-partner.in", "name": "Vikram Malhotra (Senior Clinical Monitor)", "role": "MONITOR"},
     {"email": "ethics.chair@aiia.gov.in", "name": "Dr. M. S. Baghel (IEC Chairperson)", "role": "ETHICS_COMMITTEE"},
+    {"email": "pv@aiia.gov.in", "name": "Dr. Rajesh Sharma (National Pharmacovigilance Officer)", "role": "PHARMACOVIGILANCE"},
     {"email": "pv.officer@aiia.gov.in", "name": "Dr. Sneha Patil (National Pharmacovigilance Officer)", "role": "PHARMACOVIGILANCE"},
     {"email": "regulator@cdsco.gov.in", "name": "CDSCO Clinical Trial Inspectorate", "role": "REGULATOR"},
 ]
